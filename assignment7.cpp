@@ -1,10 +1,17 @@
 //============================================================================
 // Name        : assignment7.cpp
 // Author      : Ajinkya Mogal
-// Version     :
+// Version     : 
 // Copyright   : Your copyright notice
 // Description : Hello World in C++, Ansi-style
 //============================================================================
+// To write a program for Graph creation and find its minimum cost using
+// Prim’s or Kruskal’s algorithm.
+// You have a business with several offices; you want to lease phone lines 
+// to connect them up with each other; and the phone company charges 
+// different amounts of money to connect different pairs of cities. You 
+// want a set of lines that connects all your offices with a minimum total 
+// cost. Solve the problem by suggesting appropriate data structures.
 
 #include <iostream>
 #include<vector>
@@ -21,27 +28,24 @@ public:
 	Graph(int size)
 	{
 		max = size;
-        cout << "enter all" ;
+        // cout << "enter all" ;
 		for(int i = 0 ; i  < max ; i++)
 		{
 			vector<int> temp;
 			for(int j = 0 ; j < max ; j++)
 			{
-                int a;cin >> a;
+                // int a;cin >> a;
 				// temp.push_back(0);
-				temp.push_back(a);
+				// temp.push_back(a);
 			}
 			adj.push_back(temp);
 		}
-
-
-
 	}
 
-	void create()
+	void create(int a)
 	{
-		cout << "How many edges are their :";
-		int a; cin >> a;
+		// cout << "How many edges are their :";
+		// int a; cin >> a;
 
 		for(int i = 0 ; i < a ; i++)
 		{
@@ -177,12 +181,14 @@ public:
 // 0 3 0 0 7
 // 6 8 0 0 0 
 // 0 5 7 0 0 
-int main() {
+int main()
+{
 	cout << "How many vertices are their : ";
 	int a ; cin >> a;
 
 	Graph g(a);
-	// g.create();
+	g.create(a);
+    cout << "Adjacency matrix of the above graph is : " << endl;
 	g.display();
     g.prims();
     g.primsbabber();
