@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : Assignment2.cpp
 // Author      : Ajinkya Mogal
-// Version     :3 mar
+// Version     : 3 mar
 // Copyright   : Your copyright notice
 // Description : Hello World in C++, Ansi-style
 //============================================================================

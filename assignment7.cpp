@@ -22,30 +22,39 @@ class Graph
 {
 public:
 	int max;
-	vector<vector<int> > adj;
+    int ** arr;
 
 
-	Graph(int size)
+    Graph(int size)
 	{
 		max = size;
-        // cout << "enter all" ;
-		for(int i = 0 ; i  < max ; i++)
+        arr = new int*[max];
+
+        for(int i = 0 ; i < max ; i++)
+        {
+            arr[i] = new int[max];
+        }
+
+        for(int i = 0 ; i  < max ; i++)
 		{
-			vector<int> temp;
 			for(int j = 0 ; j < max ; j++)
-			{
-                // int a;cin >> a;
-				// temp.push_back(0);
-				// temp.push_back(a);
-			}
-			adj.push_back(temp);
+                arr[i][j] = 0;
 		}
+
+        // for(int i = 0 ; i  < max ; i++)
+		// {
+		// 	for(int j = 0 ; j < max ; j++)
+        //     {
+        //         int a; cin >> a;
+        //         arr[i][j] = a;
+        //     }
+		// }
 	}
 
 	void create(int a)
 	{
-		// cout << "How many edges are their :";
-		// int a; cin >> a;
+		cout << "How many edges are their :";
+		int a; cin >> a;
 
 		for(int i = 0 ; i < a ; i++)
 		{
@@ -55,8 +64,8 @@ public:
 			cout << "Enter weight" << b << " " << c << ":" ;
 			int d ; cin >> d;
 
-			adj[b-1][c-1] = d;
-			adj[c-1][b-1] = d;
+			arr[b-1][c-1] = d;
+			arr[c-1][b-1] = d;
 		}
 	}
 
@@ -68,47 +77,10 @@ public:
 		for(int i = 0 ; i  < max ; i++)
 		{
 			for(int j = 0 ; j < max ; j++)
-				cout << adj[i][j] << " ";
+				cout << arr[i][j] << " ";
 			cout << endl;
 		}
 	}
-
-    void prims()
-    {
-        int min_cost = INT_MAX;
-        int visited[max] = {0};
-        int p , q ;
-        int total = 0;
-        visited[0] = 1;
-
-        int count = 0;
-        for(int i = 0 ; i < max ; i++)
-        {
-            if(visited[i] && count < max - 1)
-            {
-                for(int j = 0 ; j < max ; j++)
-                {
-                    if(!visited[j] &&  adj[i][j] !=0  && adj[i][j] < min_cost)
-                    {
-                            min_cost = adj[i][j];
-                            p = i ; q = j;
-                    }
-                }
-                cout << min_cost << " ";
-                visited[p] = 1;
-                visited[q] = 1;
-                count++;
-                total = total + min_cost;
-                min_cost = INT_MAX;
-                i = 0;
-            }
-            
-        }
-
-        cout << "Cost : " << total ;
-        
-    }
-
 
     void primsbabber()
     {
@@ -140,10 +112,10 @@ public:
             visited[u] = true;
             for(int k = 0 ; k < max ; k++)
             {
-                if(adj[u - 1 ][k] < key[k+1] && visited[k+1] == 0 && adj[u - 1 ][k] != 0 )
+                if(arr[u - 1 ][k] < key[k+1] && visited[k+1] == 0 && arr[u - 1 ][k] != 0 )
                 {
-                    key[k+1] = adj[u-1][k];
-                    parent[k+1] = u ;
+                    key[k+1] = arr[u-1][k];
+                    parent[k+1] = k+1 ;
                 }
             }
 
@@ -155,7 +127,7 @@ public:
         int total = 0;
         for(int i = 1 ; i < max + 1 ; i++)
         {
-            cout << key[i] << " ";
+            cout << parent[i] << " ";
             total = total + key[i];
         }
 
@@ -190,7 +162,6 @@ int main()
 	g.create(a);
     cout << "Adjacency matrix of the above graph is : " << endl;
 	g.display();
-    g.prims();
     g.primsbabber();
 	return 0;
 }

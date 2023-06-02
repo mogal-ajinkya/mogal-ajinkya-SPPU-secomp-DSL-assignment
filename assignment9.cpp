@@ -30,10 +30,12 @@ class node
 		this->data = data;
 		left = NULL;
 		right = NULL;
-		height = 1;
+		height = 0;
 		balancefact = 0;
 	}
 };
+
+
 class AVLTree
 {
 
@@ -163,7 +165,7 @@ int main()
     cout << endl;
 
     }
-    // 9
+//     9
 // 11 14 17 7 8 4 13 10 12
 	// root = t.insert(root , 11);
 	// root = t.insert(root , 14);

@@ -230,7 +230,7 @@ void mirroring(node* &root)
 	root->right = temp;
 }
 
-//incomplete 
+
 void levelT(node * &root)
 {
 	if(root == NULL)
@@ -248,6 +248,8 @@ void levelT(node * &root)
 			cout << endl;
 			q.push(NULL);
 		}
+		else if(temp == NULL)
+			continue;
 		else
 		{
 			cout << temp->data << " ";
@@ -276,7 +278,7 @@ int main() {
 //	cout << "\n###########menu###############\n1)Insert a new node \n2)Numbers of node in longest path\n3)Minimum and maximum value \n4)Mirroring \n5)Search an element\n6)Delete node \n7)display\n\n";
 	while(true)
 	{
-		cout << "Enter operation you want to perform : " ;
+		cout <<endl << "Enter operation you want to perform : " ;
 		int a ; cin >> a ;
 
 		switch(a)

@@ -66,6 +66,8 @@ void createMatrix(int key[] , int freq[] ,int freq1[] , pair<int , int > matrix[
 		}
 	}
 
+
+
 	int j = 1;
 	for(int n = 4 ; n > 0 ; n-- )
 	{
@@ -74,7 +76,7 @@ void createMatrix(int key[] , int freq[] ,int freq1[] , pair<int , int > matrix[
 			cout << i << i + j << " ";
 
 			int k = 0;
-			int minimu = 100000;      // 0 , 1
+			int minimu = 1000000;      // 0 , 1
 			for(int z = i + 1 ; z <= i + j ; z++)
 			{
 				//  k = z = 1
@@ -133,24 +135,24 @@ int main() {
 
 	// int freq[6] = { 0 ,  2 , 3 , 1 , 1 , 1 };
 
-	// int key[6] = { 0 , 7, 9, 11, 13, 15};
-	// int freq[6] = { 0 ,2, 1, 3, 4, 5 };
-	// int freq1[5] = { };
+	int key[6] = { 0 , 7, 9, 11, 13, 15};
+	int freq[6] = { 0 ,2, 1, 3, 4, 5 };
+	int freq1[5] = { };
 
 
 
 
-	cout << "Enter the no. of node that you want to insert : " << endl;
-	int a ; cin >> a;
-	cout << "Enter key element with space  : " << endl;
-	int key[a+1];
-	int freq[a+1];
-	int freq1[a+1];
+	// cout << "Enter the no. of node that you want to insert : " << endl;
+	// int a ; cin >> a;
+	// cout << "Enter key element with space  : " << endl;
+	// int key[a+1];
+	// int freq[a+1];
+	// int freq1[a+1];
 
-	key[0] = freq[0] = 0;
-	for(int i = 1 ; i < a+1 ; i++) cin >> key[i];
+	// key[0] = freq[0] = 0;
+	// for(int i = 1 ; i < a+1 ; i++) cin >> key[i];
 
-	for(int i = 1 ; i < a+1 ; i++) cin >> freq[i];
+	// for(int i = 1 ; i < a+1 ; i++) cin >> freq[i];
 	pair<int , int > matrix[5][5];
 
 	createMatrix(key , freq , freq1 , matrix);
