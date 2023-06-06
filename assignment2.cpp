@@ -34,6 +34,8 @@ public:
 		right = NULL;
 	}
 };
+
+
 void preorder_iterative(node * &root)
 {
     if(root == NULL)
@@ -148,18 +150,11 @@ void insert(node * &root)
 		else
 			newnodel = NULL;
 
-		if(temp->left != NULL)
-		{
-			q.push(newnodel);
-		}
-		else
-		{
-			q.push(newnodel);
-			temp->left = newnodel;
-		}
+		q.push(newnodel);
+		temp->left = newnodel;
 
 
-		cout << "Enter data right to "<< temp->data;
+		cout << "Enter data right to "<< temp->data << " : ";
 		cin >> a;
 		node * newnoder ;
 		if(a != -1)
@@ -167,13 +162,8 @@ void insert(node * &root)
 		else
 			newnoder = NULL;
 
-		if(temp->right != NULL)
-			q.push(newnodel);
-		else
-		{
-			q.push(newnoder);
-			temp->right = newnoder;
-		}
+		q.push(newnoder);
+		temp->right = newnoder;
 	}
 	return;
 }
