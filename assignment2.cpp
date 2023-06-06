@@ -222,7 +222,7 @@ void leavesandinternalnode(node * &root , int &leaves , int &internal)
     }
 }
 
-void erase(node * root)
+node * erase(node * root)
 {
     if(root == NULL)
         return ;
@@ -231,6 +231,7 @@ void erase(node * root)
     erase(root->right);
     cout << "deleting " << root->data << endl;
     delete root;
+	return NULL;
 }
 
 
@@ -308,7 +309,7 @@ int main() {
 			break;
 			case 7:
 			{
-				erase(root);
+				root = erase(root);
                 cout << "tree is sucessfully deleted !!"  << endl;
 			}
 			break;

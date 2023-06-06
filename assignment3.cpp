@@ -8,8 +8,6 @@
 //Create an inordered threaded binary search tree. Perform inorder,
 //preorder traversals without recursion and deletion of a node. Analyze
 //time and space complexity of the algorithm
-
-
 #include <iostream>
 using namespace std;
 
@@ -148,13 +146,12 @@ void traversal_preorder(node * & root)
 	}
 }
 
-
 node* deletenode(node*&root , node *&par , node *&ptr)
 {
 //	both child
 	if(ptr->lthread == false && ptr->rthread == false)
 	{
-		cout << "this is exefcuted" << ptr->data;
+//		cout << "this is exefcuted" << ptr->data;
         // node * s = inorder_sucessor(ptr); to get parent of sucessor we write our own sucessor func
 		node * s = ptr->right;
 		node * parofsuc = ptr;
@@ -165,13 +162,13 @@ node* deletenode(node*&root , node *&par , node *&ptr)
 		}
         ptr->data = s->data;
 
-		cout << "copied and called";
+//		cout << "copied and called";
         ptr = deletenode(ptr->right , parofsuc,  s);
 	}
 //	one  child presentif(ptr->lthread == false && ptr->rthread == true || ptr->lthread == true && ptr->rthread == false)
 	else if(ptr->lthread == true && ptr->rthread == true)
 	{
-		cout << "deleting ptr";
+//		cout << "deleting ptr";
 		if(par == NULL)
 			root = NULL;
 		else if(par->left == ptr)
@@ -188,10 +185,10 @@ node* deletenode(node*&root , node *&par , node *&ptr)
 		delete ptr;
 		return root;
 	}
-	else 
+	else
 	{
 		node * child = NULL;
-		// check for whether lwft is present or right 
+		// check for whether lwft is present or right
 		if(ptr->lthread == true)
 			child = ptr->right;
 		else
@@ -216,8 +213,8 @@ node* deletenode(node*&root , node *&par , node *&ptr)
         // if (ptr->rthread == false)
             s->left = p;
 			}
-			
-		
+
+
 		delete ptr;
 		return root;
 	}
@@ -267,34 +264,87 @@ node * todelete(node *&root , int key )
 		return deletenode(root , par , ptr);
 	}
 }
-
 int main() {
 	node * root = NULL;
-	insert(root , 20);
-	insert(root , 30);
-	insert(root , 10);
-	insert(root , 5);
-	insert(root , 16);
-	insert(root , 14);
-	insert(root , 17);
-	insert(root , 13);
-	insert(root , 15);
-	traversal_inorder(root);
-	cout << endl;
-	traversal_preorder(root);
-	cout << endl;
-	cout << endl;
-	todelete(root , 13);
-	traversal_inorder(root);
-	cout << endl;
-	traversal_preorder(root);
-	cout << endl;
-	cout << endl;
-	cout << endl;
-	todelete(root , 14);
-	traversal_inorder(root);
-	cout << endl;
-	traversal_preorder(root);
-	cout << endl;
+//	insert(root , 20);
+//	insert(root , 30);
+//	insert(root , 10);
+//	insert(root , 5);
+//	insert(root , 16);
+//	insert(root , 14);
+//	insert(root , 17);
+//	insert(root , 13);
+//	insert(root , 15);
+//	cout << "inorder : " ;
+//	traversal_inorder(root);
+//	cout << endl;
+//	cout << "preorder : " ;
+//	traversal_preorder(root);
+//	cout << endl;
+//
+//	cout << "node 13 is deleted " << endl;
+//	deletenode(root , 13);
+//	cout << "preorder : " ;
+//	traversal_preorder(root);
+//	cout << endl;
+//
+
+	cout << "\n###########menu###############\n1)Create and Insert \n2)Inorder traversal\n3)pre order \n4)node delete\n\n";
+	while(true)
+	{
+		cout << "Enter operation you want to perform : " ;
+		int a ; cin >> a ;
+
+		switch(a)
+		{
+			case 1:
+			{
+					cout << "enter number of element you want to insert : ";
+					int k; cin >>k;
+					for(int i = 0 ; i < k ; i++)
+					{
+						int a; cin >> a;
+					insert(root , a);
+					cout << "sucessfully inserted !!" << endl;
+					}
+
+				break;
+			}
+
+			case 2:
+            {
+            	cout << endl << "Inorder : " ;
+				traversal_inorder(root);
+				cout << endl;
+            }
+				break;
+			case 3:
+			{
+				cout << endl<< "preorder : " ;
+				traversal_preorder(root);
+			}
+
+				break;
+			case 4:
+			{
+				cout << "Enter element you want to delete : ";
+				int a; cin >> a;
+				todelete(root , a);
+				cout << "deleted Sucessfully" << endl;
+			}
+				break;
+
+			default:
+				cout << "Enter valid input ?\n";
+				break;
+		}
+
+		cout << endl << "Do you want to continue ? (1/0) : ";
+		bool b; cin >> b;
+
+		if(!b)
+			break;
+	}
+
 	return 0;
 }
